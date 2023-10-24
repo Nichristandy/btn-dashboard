@@ -1,118 +1,144 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import SalesChart from "@/components/Chart/SalesChart";
+import Card from "@/components/Card";
+import Layout from "@/components/Layout/Layout";
+import DateButton from "@/components/Button/Date";
+import { MdPerson, MdDataUsage } from "react-icons/md";
+import { AiFillStar } from "react-icons/ai";
+import InformationCard from "@/components/InformationCard";
+import ChartLayout from "@/components/Layout/ChartLayout";
+import ChartCard from "@/components/ChartCard";
+import DoughnutChart from "@/components/Chart/DoughnutCharts";
+import PieChart from "@/components/Chart/PieChart";
+import CustomLegend from "@/components/Chart/CustomLegend";
+import DoughnutLegend from "@/components/Chart/DoughnutLegend";
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Layout>
+      <div className="grid grid-cols-1">
+        {/* Header content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between mb-5 lg:mb-[35px]">
+          <h1 className="font-bold font-sans text-2xl">Tinjauan Umum</h1>
+          <div className="flex w-full justify-start mt-3 lg:mt-0 lg:justify-end font-sans">
+            <div className="w-3/4 flex flex-row gap-2 items-center">
+              <span className="text-btn-dark-grey">Periode:</span>
+              <DateButton date={"Januari 2021"} />
+              <span className="text-btn-dark-grey">s/d</span>
+              <DateButton date={"September 2021"} />
+            </div>
+          </div>
+        </div>
+        {/* 4 row card table */}
+        <div className="w-full grid md:grid-cols-2 lg:grid-cols-4 gap-[10px] mb-[9px]">
+          {/* realisasi */}
+          <InformationCard
+            Title={"Realisasi / Kunjungan"}
+            text1={"3299"}
+            text2={"/4255"}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <MdPerson className="w-6 h-6 text-btn-blue" />
+          </InformationCard>
+          {/* peak hour */}
+          <InformationCard Title={"Peak Hour"} text1={"12:23"} text2={"/senin"}>
+            <MdDataUsage className="w-6 h-6 text-btn-blue" />
+          </InformationCard>
+          {/* Branch Growth */}
+          <Card>
+            <div className="px-[6px] py-2 flex flex-col gap-2  avenir">
+              <span className="text-[14px] text-btn-dark-grey">
+                Branch Growth
+              </span>
+              <div className="flex flex-row items-center gap-[10px]">
+                <span className=" text-4xl font-bold">
+                  <span className="text-btn-yellow">+ </span>
+                  25
+                  <span className="text-2xl text-btn-light-grey">%</span>
+                </span>
+              </div>
+            </div>
+          </Card>
+          {/* Rata-rata */}
+          <InformationCard
+            Title={"Rata-rata Penilaian"}
+            text1={"4.2"}
+            text2={"/5"}
+          >
+            <AiFillStar className="w-6 h-6 text-btn-blue" />
+          </InformationCard>
+        </div>
+        {/* Main table content */}
+        <div
+          className="flex flex-col lg:flex-row items-start w-full gap-[10px]
+        "
+        >
+          <div className="flex flex-col md:w-full lg:w-7/12 max-h-screen hide-scrollbar overflow-scroll">
+            <ChartLayout />
+          </div>
+          <div className="flex flex-col w-full  lg:w-5/12 gap-5 hide-scrollbar max-h-screen overflow-scroll">
+            <ChartCard title={"Top 20 Sales"} detail={"Lihat Cabang"}>
+              <SalesChart />
+            </ChartCard>
+            <ChartCard title={"Statistik Waktu Tunggu / Konter"}>
+              <div className="w-full flex flex-row mt-5 mb-6 gap-[30px] items-center">
+                <div className="w-1/2">
+                  <DoughnutChart />
+                </div>
+                <div className="w-1/2 flex flex-col gap-6">
+                  <DoughnutLegend
+                    boxColor={"btn-blue"}
+                    percentage={"60"}
+                    title={"Customer Service"}
+                    minutes={"15 menit"}
+                  />
+                  <DoughnutLegend
+                    boxColor={"btn-yellow"}
+                    percentage={"35"}
+                    title={"Teller"}
+                    minutes={"25 menit"}
+                  />
+                  <DoughnutLegend
+                    boxColor={"btn-red"}
+                    percentage={"5"}
+                    title={"Layanan Prioritas"}
+                    minutes={"5 menit"}
+                  />
+                </div>
+              </div>
+            </ChartCard>
+            <ChartCard title={"Statistik Waktu Tunggu / Konter"}>
+              <div className="w-full flex flex-row items-center mt-5 mb-6 gap-[30px]">
+                <div className="w-1/2">
+                  <PieChart />
+                </div>
+
+                <div className="w-1/2 flex flex-col gap-6">
+                  <CustomLegend
+                    boxColor={"#4B9CFD"}
+                    percentage={"42"}
+                    title={"Penyimpanan"}
+                    minutes={"15 menit / transaksi"}
+                  />
+                  <CustomLegend
+                    boxColor={"#3F37FB"}
+                    percentage={"25"}
+                    title={"Kartu"}
+                    minutes={"25 menit / transaksi"}
+                  />
+                  <div className="w-full flex flex-col gap-1">
+                    <div className="flex flex-row items-center gap-2">
+                      <div
+                        className={`w-3 h-3 rounded-[3px] bg-[#B2C2FE]`}
+                      ></div>
+                      <span className="text-btn-dark-grey">Pinjaman</span>
+                    </div>
+                    <span className="font-bold">1225</span>
+                  </div>
+                </div>
+              </div>
+            </ChartCard>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </Layout>
+  );
 }
