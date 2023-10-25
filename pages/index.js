@@ -71,7 +71,7 @@ export default function Home() {
           className="flex flex-col lg:flex-row items-start w-full gap-[10px]
         "
         >
-          <div className="flex flex-col md:w-full lg:w-7/12 max-h-screen hide-scrollbar overflow-scroll">
+          <div className="flex flex-col w-full lg:w-7/12 max-h-screen hide-scrollbar overflow-scroll">
             <ChartLayout />
           </div>
           <div className="flex flex-col w-full  lg:w-5/12 gap-5 hide-scrollbar max-h-screen overflow-scroll">

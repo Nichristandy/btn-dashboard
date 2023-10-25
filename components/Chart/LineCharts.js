@@ -49,6 +49,7 @@ const LineCharts = ({ label }) => {
         display: false,
       },
     },
+    scales: { y: { min: 0, max: 100, ticks: { stepSize: 20 } } },
   };
 
   return <Line data={data} options={options}></Line>;
