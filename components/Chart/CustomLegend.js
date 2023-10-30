@@ -6,15 +6,15 @@ const CustomLegend = ({ boxColor, title, percentage, minutes }) => {
           style={{ backgroundColor: `${boxColor}` }}
           className={`w-3 h-3 rounded-[3px]`}
         ></div>
-        <span className="text-btn-dark-grey">{title}</span>
+        <span className="text-btn-dark-grey text-xs md:text-base">{title}</span>
       </div>
       {percentage ? (
-        <span className="text-base font-bold">
+        <span className="hidden md:block text-xs md:text-base font-bold">
           {percentage} %,
-          <span className="text-sm font-normal"> total 552 jam</span>
+          <span className="md:text-sm font-normal"> total 552 jam</span>
         </span>
       ) : null}
-      {minutes ? <span className="text-sm">{minutes}</span> : null}
+      {minutes ? <span className="text-xs md:text-sm">{minutes}</span> : null}
     </div>
   );
 };

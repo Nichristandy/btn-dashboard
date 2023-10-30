@@ -49,7 +49,11 @@ const LineCharts = ({ label }) => {
         display: false,
       },
     },
-    scales: { y: { min: 0, max: 100, ticks: { stepSize: 20 } } },
+    scales: {
+      y: { min: 0, max: 100, ticks: { stepSize: 20 } },
+    },
+    // maintainAspectRatio: false,
+    // aspectRatio: 2 | 1,
   };
 
   return <Line data={data} options={options}></Line>;

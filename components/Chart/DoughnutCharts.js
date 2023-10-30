@@ -41,7 +41,7 @@ const textCenter = {
     ctx.fillStyle = "black";
     ctx.fillText("menit", xCoor, yCoor);
 
-    ctx.font = "14px sans-serif";
+    ctx.font = "16px sans-serif";
     ctx.fillStyle = "#AFAFAF";
     ctx.fillText("dari 552 jam", xCoor, yCoor + 36);
   },

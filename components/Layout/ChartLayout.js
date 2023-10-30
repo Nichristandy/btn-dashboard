@@ -10,7 +10,7 @@ const ChartLayout = () => {
         legend1={"Customer Service"}
         legend2={"Teller"}
       >
-        <div className="w-full flex justify-center mt-5">
+        <div className="w-full max-h-[150px] md:max-h-0 md:min-h-[350px] flex justify-center mt-5">
           <LineCharts label={[23, 24, 25, 26, 27, 28, 29, 31]} />
         </div>
       </ChartCard>
@@ -22,7 +22,7 @@ const ChartLayout = () => {
         legend1={"Customer Service"}
         legend2={"Teller"}
       >
-        <div className="w-full flex justify-center mt-5">
+        <div className="w-full max-h-[150px] md:min-h-[350px] flex justify-center mt-5">
           <LineCharts
             label={[
               "Jan",

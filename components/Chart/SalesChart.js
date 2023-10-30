@@ -158,7 +158,7 @@ const SalesChart = () => {
           <div className="flex flex-row w-1/4 ml-2 justify-end">
             <span>0</span>
           </div>
-          <div className="flex flex-row justify-end  gap-8">
+          <div className="flex flex-row justify-end gap-1  md:gap-14 lg:gap-7">
             <span>1000</span>
             <span>2000</span>
             <span>3000</span>

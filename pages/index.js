@@ -17,10 +17,12 @@ export default function Home() {
     <Layout>
       <div className="grid grid-cols-1">
         {/* Header content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between mb-5 lg:mb-[35px]">
-          <h1 className="font-bold font-sans text-2xl">Tinjauan Umum</h1>
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between mb-5">
+          <h1 className="font-bold font-sans text-2xl lg:text-3xl">
+            Tinjauan Umum
+          </h1>
           <div className="flex w-full justify-start mt-3 lg:mt-0 lg:justify-end font-sans">
-            <div className="w-3/4 flex flex-row gap-2 items-center">
+            <div className="w-full flex-col items-start md:w-3/4 flex md:flex-row gap-2 md:items-center">
               <span className="text-btn-dark-grey">Periode:</span>
               <DateButton date={"Januari 2021"} />
               <span className="text-btn-dark-grey">s/d</span>
@@ -79,25 +81,25 @@ export default function Home() {
               <SalesChart />
             </ChartCard>
             <ChartCard title={"Statistik Waktu Tunggu / Konter"}>
-              <div className="w-full flex flex-row mt-5 mb-6 gap-[30px] items-center">
-                <div className="w-1/2">
+              <div className="w-full flex flex-col md:flex-row mt-5 mb-6 gap-[30px] items-center">
+                <div className="w-full md:w-1/2 min-h-[183px] flex items-center md:items-start">
                   <DoughnutChart />
                 </div>
-                <div className="w-1/2 flex flex-col gap-6">
+                <div className="w-full md:w-1/2 flex flex-row md:flex-col overflow-x-scroll gap-3 hide-scrollbar md:gap-6">
                   <DoughnutLegend
-                    boxColor={"btn-blue"}
+                    boxColor={"#0067AC"}
                     percentage={"60"}
                     title={"Customer Service"}
                     minutes={"15 menit"}
                   />
                   <DoughnutLegend
-                    boxColor={"btn-yellow"}
+                    boxColor={"#F6B945"}
                     percentage={"35"}
                     title={"Teller"}
                     minutes={"25 menit"}
                   />
                   <DoughnutLegend
-                    boxColor={"btn-red"}
+                    boxColor={"#E31B23"}
                     percentage={"5"}
                     title={"Layanan Prioritas"}
                     minutes={"5 menit"}
@@ -106,12 +108,12 @@ export default function Home() {
               </div>
             </ChartCard>
             <ChartCard title={"Statistik Waktu Tunggu / Konter"}>
-              <div className="w-full flex flex-row items-center mt-5 mb-6 gap-[30px]">
-                <div className="w-1/2">
+              <div className="w-full flex flex-col md:flex-row items-center mt-5 mb-6 gap-[30px]">
+                <div className="w-full md:w-1/2 min-h-[183px]">
                   <PieChart />
                 </div>
 
-                <div className="w-1/2 flex flex-col gap-6">
+                <div className="w-full md:w-1/2 flex flex-row md:flex-col overflow-x-scroll gap-3 hide-scrollbar md:gap-6">
                   <CustomLegend
                     boxColor={"#4B9CFD"}
                     percentage={"42"}
@@ -129,9 +131,11 @@ export default function Home() {
                       <div
                         className={`w-3 h-3 rounded-[3px] bg-[#B2C2FE]`}
                       ></div>
-                      <span className="text-btn-dark-grey">Pinjaman</span>
+                      <span className="text-btn-dark-grey text-xs md:text-base">
+                        Pinjaman
+                      </span>
                     </div>
-                    <span className="font-bold">1225</span>
+                    <span className="font-bold text-xs md:text-base">1225</span>
                   </div>
                 </div>
               </div>

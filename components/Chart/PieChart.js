@@ -24,6 +24,7 @@ const options = {
       display: false,
     },
   },
+  // maintainAspectRatio: false,
 };
 
 const PieChart = () => {
